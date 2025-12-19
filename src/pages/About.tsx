@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { SectionHeader } from '@/components/ui/section-header';
-import { Users, Target, Lightbulb, Heart, Award, Clock, Rocket, Shield } from 'lucide-react';
+import { Users, Target, Lightbulb, Heart, Award, Clock, Rocket, Shield, Quote, Star } from 'lucide-react';
 
 const teamMembers = [
   {
@@ -60,6 +60,39 @@ const milestones = [
   { year: '2022', title: 'Nouveaux locaux', description: 'Installation à Ouest Foire dans des bureaux modernes.' },
   { year: '2023', title: 'Solutions Tech', description: 'Lancement des abonnements et services de support technique.' },
   { year: '2024', title: 'Croissance continue', description: 'Plus de 100 projets réalisés et une équipe de 15 talents.' },
+];
+
+const testimonials = [
+  {
+    name: 'Ibrahima Sarr',
+    role: 'CEO, TechSenegal',
+    company: 'TechSenegal',
+    content: 'LAPS a transformé notre présence digitale. Leur équipe est réactive, créative et vraiment à l\'écoute de nos besoins. Un partenariat que je recommande vivement.',
+    rating: 5,
+  },
+  {
+    name: 'Mariama Diop',
+    role: 'Directrice Marketing, ModaDakar',
+    company: 'ModaDakar',
+    content: 'Grâce à LAPS, notre boutique en ligne génère 3x plus de ventes. Leur expertise en marketing digital est exceptionnelle.',
+    rating: 5,
+  },
+  {
+    name: 'Ousmane Fall',
+    role: 'Fondateur, StartupHub',
+    company: 'StartupHub',
+    content: 'L\'accompagnement personnalisé et les conseils stratégiques de LAPS nous ont permis de lancer notre startup avec succès.',
+    rating: 5,
+  },
+];
+
+const clientLogos = [
+  { name: 'TechSenegal', initials: 'TS' },
+  { name: 'ModaDakar', initials: 'MD' },
+  { name: 'StartupHub', initials: 'SH' },
+  { name: 'AfricaFinance', initials: 'AF' },
+  { name: 'SenCommerce', initials: 'SC' },
+  { name: 'DakarMedia', initials: 'DM' },
 ];
 
 const containerVariants = {
@@ -273,6 +306,89 @@ const About = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            title="Ce que disent nos clients"
+            description="Découvrez les témoignages de ceux qui nous font confiance"
+            centered
+          />
+          
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8 mt-12"
+          >
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="relative p-8 rounded-2xl bg-secondary/50 border border-border/50 hover:border-accent/50 transition-all duration-300 group"
+              >
+                <Quote className="absolute top-6 right-6 w-10 h-10 text-accent/20 group-hover:text-accent/40 transition-colors" />
+                
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+                  ))}
+                </div>
+                
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                  "{testimonial.content}"
+                </p>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent/60 flex items-center justify-center text-sm font-bold text-accent-foreground">
+                    {testimonial.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-foreground">{testimonial.name}</div>
+                    <div className="text-xs text-muted-foreground">{testimonial.role}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Client Logos Section */}
+      <section className="py-12 md:py-16 bg-secondary/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center text-muted-foreground text-sm mb-8"
+          >
+            Ils nous font confiance
+          </motion.p>
+          
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center items-center gap-8 md:gap-12"
+          >
+            {clientLogos.map((logo, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="flex items-center justify-center w-24 h-16 md:w-32 md:h-20 rounded-xl bg-background border border-border/50 hover:border-accent/50 hover:shadow-lg transition-all duration-300 group"
+              >
+                <span className="text-xl md:text-2xl font-bold text-muted-foreground group-hover:text-accent transition-colors">
+                  {logo.initials}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
