@@ -3,6 +3,14 @@ import { Layout } from '@/components/layout/Layout';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Users, Target, Lightbulb, Heart, Award, Clock, Rocket, Shield, Quote, Star } from 'lucide-react';
 
+// Client logos
+import logoTechSenegal from '@/assets/logos/techsenegal.png';
+import logoModaDakar from '@/assets/logos/modadakar.png';
+import logoStartupHub from '@/assets/logos/startuphub.png';
+import logoAfricaFinance from '@/assets/logos/africafinance.png';
+import logoSenCommerce from '@/assets/logos/sencommerce.png';
+import logoDakarMedia from '@/assets/logos/dakarmedia.png';
+
 const teamMembers = [
   {
     name: 'Amadou Diallo',
@@ -49,7 +57,7 @@ const values = [
   {
     icon: Award,
     title: 'Excellence',
-    description: 'Nous visons la perfection dans chaque détail de notre travail.',
+    description: 'Nous visions la perfection dans chaque détail de notre travail.',
   },
 ];
 
@@ -87,12 +95,12 @@ const testimonials = [
 ];
 
 const clientLogos = [
-  { name: 'TechSenegal', initials: 'TS' },
-  { name: 'ModaDakar', initials: 'MD' },
-  { name: 'StartupHub', initials: 'SH' },
-  { name: 'AfricaFinance', initials: 'AF' },
-  { name: 'SenCommerce', initials: 'SC' },
-  { name: 'DakarMedia', initials: 'DM' },
+  { name: 'TechSenegal', logo: logoTechSenegal },
+  { name: 'ModaDakar', logo: logoModaDakar },
+  { name: 'StartupHub', logo: logoStartupHub },
+  { name: 'AfricaFinance', logo: logoAfricaFinance },
+  { name: 'SenCommerce', logo: logoSenCommerce },
+  { name: 'DakarMedia', logo: logoDakarMedia },
 ];
 
 const containerVariants = {
@@ -127,10 +135,10 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
               À propos de <span className="text-accent">LAPS</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mx-auto">
               Une agence digitale sénégalaise passionnée, dédiée à transformer vos ambitions 
               en succès numériques depuis 2019.
             </p>
@@ -375,17 +383,19 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center items-center gap-8 md:gap-12"
+            className="flex flex-wrap justify-center items-center gap-6 md:gap-10"
           >
             {clientLogos.map((logo, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="flex items-center justify-center w-24 h-16 md:w-32 md:h-20 rounded-xl bg-background border border-border/50 hover:border-accent/50 hover:shadow-lg transition-all duration-300 group"
+                className="flex items-center justify-center w-28 h-20 md:w-36 md:h-24 rounded-xl bg-card border border-border/50 hover:border-accent/50 hover:shadow-lg transition-all duration-300 group p-3 overflow-hidden"
               >
-                <span className="text-xl md:text-2xl font-bold text-muted-foreground group-hover:text-accent transition-colors">
-                  {logo.initials}
-                </span>
+                <img 
+                  src={logo.logo} 
+                  alt={logo.name}
+                  className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                />
               </motion.div>
             ))}
           </motion.div>
@@ -402,10 +412,10 @@ const About = () => {
             className="max-w-2xl mx-auto"
           >
             <Rocket className="w-12 h-12 text-accent mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
               Prêt à démarrer votre projet ?
             </h2>
-            <p className="text-white/80 text-lg mb-8">
+            <p className="text-primary-foreground/80 text-lg mb-8">
               Rejoignez les entreprises qui nous font confiance et transformez 
               votre vision en réalité digitale.
             </p>
