@@ -4,6 +4,7 @@ import { PageTransition } from './PageTransition';
 import Index from '@/pages/Index';
 import Contact from '@/pages/Contact';
 import About from '@/pages/About';
+import Portfolio from '@/pages/Portfolio';
 import ServiceDetail from '@/pages/ServiceDetail';
 import NotFound from '@/pages/NotFound';
 
@@ -34,6 +35,14 @@ export const AnimatedRoutes = () => {
           element={
             <PageTransition>
               <About />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/portfolio"
+          element={
+            <PageTransition>
+              <Portfolio />
             </PageTransition>
           }
         />
