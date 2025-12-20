@@ -20,8 +20,9 @@ export const Navbar = () => {
   const location = useLocation();
 
   const isActive = (path: string) => {
-    if (path === '/') return location.pathname === '/';
-    return location.pathname.startsWith(path.split('#')[0]);
+    const basePath = path.split('#')[0];
+    if (path === '/' || basePath === '/') return location.pathname === '/';
+    return location.pathname.startsWith(basePath);
   };
 
   return (
