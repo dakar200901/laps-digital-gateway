@@ -20,8 +20,18 @@ export const Navbar = () => {
   const location = useLocation();
 
   const isActive = (path: string) => {
-    const basePath = path.split('#')[0];
-    if (path === '/' || basePath === '/') return location.pathname === '/';
+    const [basePath, hash] = path.split('#');
+
+    // Hash links (ex: /#services) should only be active when the hash matches
+    if (hash) {
+      return location.pathname === basePath && location.hash === `#${hash}`;
+    }
+
+    // Home should only be active when we're on / with no hash
+    if (basePath === '/') {
+      return location.pathname === '/' && !location.hash;
+    }
+
     return location.pathname.startsWith(basePath);
   };
 
