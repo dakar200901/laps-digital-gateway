@@ -5,6 +5,8 @@ import Index from '@/pages/Index';
 import Contact from '@/pages/Contact';
 import About from '@/pages/About';
 import Portfolio from '@/pages/Portfolio';
+import Blog from '@/pages/Blog';
+import BlogPost from '@/pages/BlogPost';
 import ServiceDetail from '@/pages/ServiceDetail';
 import Auth from '@/pages/Auth';
 import Admin from '@/pages/Admin';
@@ -53,6 +55,22 @@ export const AnimatedRoutes = () => {
           element={
             <PageTransition>
               <ServiceDetail />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <PageTransition>
+              <Blog />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/blog/:slug"
+          element={
+            <PageTransition>
+              <BlogPost />
             </PageTransition>
           }
         />
