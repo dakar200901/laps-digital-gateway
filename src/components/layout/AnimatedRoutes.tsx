@@ -6,6 +6,8 @@ import Contact from '@/pages/Contact';
 import About from '@/pages/About';
 import Portfolio from '@/pages/Portfolio';
 import ServiceDetail from '@/pages/ServiceDetail';
+import Auth from '@/pages/Auth';
+import Admin from '@/pages/Admin';
 import NotFound from '@/pages/NotFound';
 
 export const AnimatedRoutes = () => {
@@ -51,6 +53,22 @@ export const AnimatedRoutes = () => {
           element={
             <PageTransition>
               <ServiceDetail />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/auth"
+          element={
+            <PageTransition>
+              <Auth />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <PageTransition>
+              <Admin />
             </PageTransition>
           }
         />
