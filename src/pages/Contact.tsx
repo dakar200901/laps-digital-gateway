@@ -68,17 +68,27 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      const contactData = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim() || null,
+        subject: formData.subject.trim(),
+        message: formData.message.trim(),
+      };
+
+      // Save to database
       const { error } = await supabase
         .from('contact_messages')
-        .insert({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          phone: formData.phone.trim() || null,
-          subject: formData.subject.trim(),
-          message: formData.message.trim(),
-        });
+        .insert(contactData);
 
       if (error) throw error;
+
+      // Send email notification (don't block on this)
+      supabase.functions.invoke('notify-contact', {
+        body: contactData,
+      }).catch(err => {
+        console.error('Email notification failed:', err);
+      });
 
       toast({
         title: 'Message envoyé !',
