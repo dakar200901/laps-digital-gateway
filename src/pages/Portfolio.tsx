@@ -20,6 +20,14 @@ import {
   Star
 } from 'lucide-react';
 
+// Project Images
+import ecommerceProject from '@/assets/projects/ecommerce-project.jpg';
+import restaurantProject from '@/assets/projects/restaurant-project.jpg';
+import fitnessProject from '@/assets/projects/fitness-project.jpg';
+import realestateProject from '@/assets/projects/realestate-project.jpg';
+import healthcareProject from '@/assets/projects/healthcare-project.jpg';
+import saasProject from '@/assets/projects/saas-project.jpg';
+
 type Category = 'all' | 'marketing' | 'dev' | 'design' | 'business';
 
 interface Project {
@@ -62,7 +70,7 @@ const projects: Project[] = [
       author: 'Ibrahima Sarr',
       role: 'CEO, TechSenegal',
     },
-    image: 'TS',
+    image: saasProject,
     color: 'from-blue-500 to-cyan-400',
   },
   {
@@ -85,7 +93,7 @@ const projects: Project[] = [
       author: 'Mariama Diop',
       role: 'Directrice Marketing, ModaDakar',
     },
-    image: 'MD',
+    image: ecommerceProject,
     color: 'from-pink-500 to-rose-400',
   },
   {
@@ -108,7 +116,7 @@ const projects: Project[] = [
       author: 'Ousmane Fall',
       role: 'Fondateur, StartupHub',
     },
-    image: 'SH',
+    image: fitnessProject,
     color: 'from-orange-500 to-amber-400',
   },
   {
@@ -126,7 +134,7 @@ const projects: Project[] = [
       { label: 'Coûts opérationnels', value: '-25%' },
       { label: 'NPS Score', value: '+42pts' },
     ],
-    image: 'AF',
+    image: healthcareProject,
     color: 'from-green-500 to-emerald-400',
   },
   {
@@ -144,7 +152,7 @@ const projects: Project[] = [
       { label: 'Trafic web', value: '+150%' },
       { label: 'Ventes social', value: '+95%' },
     ],
-    image: 'SC',
+    image: restaurantProject,
     color: 'from-teal-500 to-cyan-400',
   },
   {
@@ -162,7 +170,7 @@ const projects: Project[] = [
       { label: 'Erreurs', value: '-80%' },
       { label: 'Satisfaction équipe', value: '95%' },
     ],
-    image: 'DM',
+    image: realestateProject,
     color: 'from-red-500 to-rose-400',
   },
 ];
@@ -287,10 +295,14 @@ const Portfolio = () => {
                 >
                   <div className="rounded-2xl overflow-hidden bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-xl">
                     {/* Project Image */}
-                    <div className={`relative h-48 bg-gradient-to-br ${project.color} flex items-center justify-center`}>
-                      <span className="text-5xl font-bold text-white/90">{project.image}</span>
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                        <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white font-medium flex items-center gap-2">
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white font-medium flex items-center gap-2 bg-black/50 px-4 py-2 rounded-full">
                           Voir le projet <ExternalLink className="w-4 h-4" />
                         </span>
                       </div>
@@ -338,8 +350,13 @@ const Portfolio = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className={`relative h-48 bg-gradient-to-br ${selectedProject.color} flex items-center justify-center`}>
-                <span className="text-6xl font-bold text-white/90">{selectedProject.image}</span>
+              <div className="relative h-64 overflow-hidden">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white transition-colors"
